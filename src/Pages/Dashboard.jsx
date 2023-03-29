@@ -40,7 +40,7 @@ let newDay = Intl.DateTimeFormat("en-UK", options).format(today);
         <div className="vr me-4" style={{background: "#6A3484"}}></div>
         <span className='me-4 fw-bold' style={{color: "#6A3484"}}>Offsite</span>
       </div>
-      <div className="attandance-div px-4 py-4">
+      <div className="attandance-div px-4 py-4 w-100 position-relative">
         <AttendanceTable />
       </div>
       

@@ -2,7 +2,7 @@ import React from 'react';
 
 function AttendanceTable(props) {
     return (
-        <div className='px-4 py-4 d-flex align-items-top justify-content-center' style={{background: "#FFF"}}>
+        <div className='px-4 py-4 d-flex align-items-top justify-content-center info-div position-relative' style={{background: "#FFF", width: "60%", margin: "0 auto",}}>
             <div className="team">
             <div className="team me-4">
                 <h3 className='team-name fs-5'>Software Team</h3>

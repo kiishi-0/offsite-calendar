@@ -6,11 +6,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
+import NewSchedule from './NewSchedule';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Dashboard />,
+  },
+  {
+    path: "/newschedule",
+    element: <NewSchedule />,
   },
   
 ]);
