@@ -10,7 +10,7 @@ export default function DropdownComponent({items}) {
 
       <Dropdown.Menu>
         {items.map( (item, index) => {
-            return <Dropdown.Item key={index} href="#/action-1">{item}</Dropdown.Item>
+            return <Dropdown.Item key={index} href="#/action-1" as={item}></Dropdown.Item>
         })}
         
         

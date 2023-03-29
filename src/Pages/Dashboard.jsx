@@ -1,5 +1,6 @@
 import React from 'react';
 import { Nav, Container, Navbar, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import AttendanceTable from '../Components/AttendanceTable';
 import NavBar from '../Components/NavBar';
 import plusSign from "../images/plus.png"
@@ -12,8 +13,6 @@ function Dashboard(props) {
   let [month, date, year] = new Date().toLocaleDateString("en-US").split("/");
   let day = `${monthArray[month - 1]} ${date}, ${year}`;
   let today = new Date(day);
-  console.log(today);
-  console.log(today.toLocaleString());
 
 let options = {
     day: "numeric",
@@ -28,11 +27,14 @@ let newDay = Intl.DateTimeFormat("en-UK", options).format(today);
     <div>
       <NavBar />
       <div className="container pt-4">
-        <div className="date w-100 pt-4">
+        <div className="date w-100 pt-2 mb-4">
             <h1 className='text-end' style={{color: "#6A3484"}}>{newDay}.</h1>
         </div>
+        
         <div className="new-schedule-btn w-100 d-flex justify-content-end mt-4 pe-4">
+          <Link to="newschedule">
             <img src={plusSign} alt="..." title='New Schedule'/>
+          </Link>
         </div>
       </div>
       <div className="switch-btns d-flex align-items-center justify-content-start mx-4 mt-4">

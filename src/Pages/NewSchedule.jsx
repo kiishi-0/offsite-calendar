@@ -1,6 +1,7 @@
 import React from 'react'
-import DropdownComponent from './Components/DropdownComponent'
-import NavBar from './Components/NavBar'
+import DropdownComponent from '../Components/DropdownComponent'
+import NavBar from '../Components/NavBar'
+import ScheduleTable from '../Components/ScheduleTable';
 
 export default function NewSchedule() {
     const items = ["Software", "Data", "Product", "Operations", "Infrastructure"];
@@ -12,6 +13,7 @@ export default function NewSchedule() {
             <div className="schedule-div d-flex flex-column align-items-end justify-content-start">
                 <span className="btn">New Schedule</span>
             </div>
+            <ScheduleTable />
         </div>
         
     </div>
