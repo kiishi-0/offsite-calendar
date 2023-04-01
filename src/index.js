@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
 import NewSchedule from './Pages/NewSchedule';
+import EditSchedule from './Pages/EditSchedule';
 
 const router = createBrowserRouter([
   {
@@ -14,8 +15,16 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   },
   {
+    path: "/home",
+    element: <Dashboard />,
+  },
+  {
     path: "/newschedule",
     element: <NewSchedule />,
+  },
+  {
+    path: "/editschedule",
+    element: <EditSchedule />,
   },
   
 ]);

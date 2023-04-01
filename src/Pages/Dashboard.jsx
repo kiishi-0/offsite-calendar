@@ -32,7 +32,7 @@ let newDay = Intl.DateTimeFormat("en-UK", options).format(today);
         </div>
         
         <div className="new-schedule-btn w-100 d-flex justify-content-end mt-4 pe-4">
-          <Link to="newschedule">
+          <Link to="/newschedule">
             <img src={plusSign} alt="..." title='New Schedule'/>
           </Link>
         </div>

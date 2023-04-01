@@ -56,3 +56,33 @@ code {
   height: 50%;
   z-index: -1;
 }
+
+.btn-placements:hover{
+  background-color: #6b34841a!important;
+  color: #6A3484;
+}
+.edit-day{
+  transition: linear .25s;
+}
+.edit-day:hover{
+  background-color: #6b34841e;
+}
+
+.members-dept .member{
+  position: relative;
+  transition: all linear .5s;
+}
+.members-dept .member:hover:after{
+  width: 100%;
+}
+.members-dept .member::after{
+  position: absolute;
+  content: '';
+  width: 0%;
+  left: 0;
+  bottom: 0;
+  background-color: #6A3484;
+  height: 1px;
+  transition: all linear .5s;
+}
+
