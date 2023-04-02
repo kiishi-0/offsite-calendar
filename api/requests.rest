@@ -1,10 +1,34 @@
-POST http://localhost:3003/team/new
+POST http://localhost:3003/team/new/multiple
 Content-Type: application/json
 
 {
-    "firstname": "Gbenro",
-    "lastname": "Iluyemi",
-    "team": "infrastructure"
+    "members":[
+        {
+            "firstname":"Paul",
+            "lastname": "John",
+            "team": "software",
+            "subteam": "frontend"
+        },
+        {
+            "firstname":"Babatunde",
+            "lastname": "Olowoyeye",
+            "team": "software",
+            "subteam": "frontend"
+        },
+        {
+            "firstname":"Promise",
+            "lastname": "Amadi",
+            "team": "software",
+            "subteam": "mobile"
+        },
+        {
+            "firstname":"Godwin",
+            "lastname": "Yoh",
+            "team": "software",
+            "subteam": "backend"
+        }
+    ]
 }
+###
 
- 
+Get http://localhost:3003/getTeam/software

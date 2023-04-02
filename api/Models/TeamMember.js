@@ -2,10 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TeamMemberSchema = new Schema({
-    id:{
-        type: Int16Array,
-        required: true,
-    },
+    
+     
     firstname: {
         type: String,
         required: true
