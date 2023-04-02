@@ -63,11 +63,14 @@ code {
 }
 .edit-day{
   transition: linear .25s;
+  cursor: pointer;
 }
 .edit-day:hover{
   background-color: #6b34841e;
 }
-
+p.member{
+  cursor: pointer;
+}
 .members-dept .member{
   position: relative;
   transition: all linear .5s;
