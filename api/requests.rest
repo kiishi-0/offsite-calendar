@@ -32,3 +32,9 @@ Content-Type: application/json
 ###
 
 Get http://localhost:3003/getTeam/software
+###
+
+Get http://localhost:3003/subteams
+###
+
+Get http://localhost:3003/subteams/software

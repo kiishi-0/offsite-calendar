@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const router = express.Router();
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -16,6 +17,26 @@ mongoose.connect("mongodb://localhost:27017/offsite-calendar",{ useNewUrlParser:
 const TeamMember = require('./Models/TeamMember')
 const Offsite = require('./Models/Offsite')
 const Onsite = require('./Models/Onsite'); 
+
+app.get('/subteams', async (req, res) => {
+  try {
+    const subteams = await TeamMember.distinct('subteam');
+    res.json(subteams);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+app.get('/subteams/:team', async (req, res) => {
+  const { team } = req.params;
+  try {
+    const subteams = await TeamMember.find({ team }).distinct('subteam');
+    res.status(200).json({ subteams });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 app.post("/team/new", async (req, res)=>{
     const team = new TeamMember({

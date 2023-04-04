@@ -66,7 +66,7 @@ code {
   cursor: pointer;
 }
 .edit-day:hover{
-  background-color: #6b34841e;
+  background-color: #6b34840c;
 }
 p.member{
   cursor: pointer;
@@ -89,3 +89,17 @@ p.member{
   transition: all linear .5s;
 }
 
+li.member{
+  list-style: none;
+}
+
+.close-btn{
+  transition: all linear .25s;
+  padding: 2px 5px;
+}
+
+.close-btn:hover{
+  background-color: #6b34842c;
+  border-radius: 5px;
+  
+}
