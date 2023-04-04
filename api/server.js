@@ -77,22 +77,56 @@ app.post("/offsite/new", async (req, res)=>{
     res.json(offsite);
 });
 
-app.post("/offsite/new/multiple", async (req, res)=>{
+// app.post("/offsite/new/multiple", async (req, res)=>{
 
-  req.body.members.forEach( async member =>{
-    const offsite = new Offsite({
+//   req.body.members.forEach( async member =>{
+//     const offsite = new Offsite({
+//         firstname: member.firstname,
+//         lastname: member.lastname,
+//         team: member.team,
+//         day: member.day
+//     })
+
+//     await offsite.save();
+
+//     res.json(offsite);
+//   })
+    
+// });
+
+app.post("/offsite/new/multiple", async (req, res) => {
+  const members = req.body.members;
+  const newMembers = [];
+
+  // Loop through each member in the request body
+  for (let member of members) {
+    // Check if a member with the same first and last name already exists in the database
+    const existingMember = await Offsite.findOne({
+      firstname: member.firstname,
+      lastname: member.lastname,
+      day: member.day
+    });
+
+    // If the member doesn't exist, create a new Offsite document and save it
+    if (!existingMember) {
+      const offsite = new Offsite({
         firstname: member.firstname,
         lastname: member.lastname,
         team: member.team,
-        day: member.day
-    })
+        subteam: member.subteam,
+        day: member.day,
+      });
 
-    await offsite.save();
+      const savedOffsite = await offsite.save();
+      newMembers.push(savedOffsite);
+    }
+  }
 
-    res.json(offsite);
-  })
-    
+  // Return the new members that were added to the database
+  res.json(newMembers);
 });
+
+
 app.post("/onsite/new", async (req, res)=>{
     const onsite = new Onsite({
         firstname: req.body.firstname,
@@ -133,7 +167,7 @@ app.get("/getTeam/:team", async(req, res)=>{
 app.get("/offsite/:team", async (req, res)=>{
   const team = req.params.team;
   try {
-    const doc = await Offsite.findOne({ team: team });
+    const doc = await Offsite.find({ team: team });
     res.send(doc);
   } catch (err) {
     res.send(err)
@@ -144,7 +178,7 @@ app.get("/onsite/:team", async (req, res)=>{
     const team = req.params.team;
 
     try {
-      const doc = await Onsite.findOne({ team: team });
+      const doc = await Onsite.find({ team: team });
       res.send(doc);
     } catch (err) {
       res.send(err)

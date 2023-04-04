@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AttendanceTable(props) {
+function AttendanceTable({setOffMembers, offMembers}) {
     return (
         <div className='px-4 py-4 d-flex align-items-top justify-content-center info-div position-relative' style={{background: "#FFF", width: "60%", margin: "0 auto",}}>
             <div className="team">

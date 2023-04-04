@@ -14,6 +14,11 @@ const OffsiteSchema = new Schema({
         type: String,
         required: true,
     },
+    subteam:{
+        type: String,
+        required: false,
+        default: null
+    },
     day: {
         type: String,
         required: true

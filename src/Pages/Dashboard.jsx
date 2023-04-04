@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Nav, Container, Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AttendanceTable from '../Components/AttendanceTable';
@@ -23,6 +23,8 @@ let options = {
 
 let newDay = Intl.DateTimeFormat("en-UK", options).format(today);
 
+const [offMembers, setOffMembers] = useState([]);
+
   return (
     <div>
       <NavBar />
@@ -43,7 +45,7 @@ let newDay = Intl.DateTimeFormat("en-UK", options).format(today);
         <span className='me-4 fw-bold' style={{color: "#6A3484"}}>Offsite</span>
       </div>
       <div className="attandance-div px-4 py-4 w-100 position-relative">
-        <AttendanceTable />
+        <AttendanceTable offMembers={offMembers} setOffMembers={setOffMembers} />
       </div>
       
     </div>

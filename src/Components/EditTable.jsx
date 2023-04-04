@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-export default function EditTable({members}) {
+export default function EditTable({members, SubmitOffsite, setOffsite, offsite}) {
     const [teu, setTeu] = useState([]);
     const [wed, setWed] = useState([]);
     const [thur, setThur] = useState([]);
@@ -8,7 +8,9 @@ export default function EditTable({members}) {
 
     const [day, setDay] = useState('');
 
-    const [subteam, setSubTeam] = useState([])
+    const [subteam, setSubTeam] = useState([]);
+
+    // const [offsite, setOffsite] = useState([]);
 
 
     const isSubTeam = (day, person) =>{
@@ -58,7 +60,10 @@ export default function EditTable({members}) {
     const RemovePerson = (e, day, setDay) =>{
         let fname = e.target.parentElement.innerText.split(" ")[0];
         console.log(fname)
+        let newOffsite = offsite.filter(d =>  d.firstname !== fname );
         let newDay = day.filter(d =>  d.firstname !== fname );
+        setOffsite(newOffsite);
+        console.log(offsite)
         console.log(newDay)
         setDay(newDay);
     }
@@ -68,36 +73,49 @@ export default function EditTable({members}) {
         // console.log(val);
         let mem = getMember(val);
         // console.log(mem)
-
+        mem.day = day.toLowerCase();
+        // console
+        if(day){
+            setOffsite([...offsite, mem]);
+        }
+        
         switch(day){
             case "Teusday":
                 if(!teu?.includes(mem) && findSubTeam(teu, mem)){
+                    
                     setTeu([...teu, mem])
                     console.log(teu)
                 }
                 break;
             case "Wednesday":
                 if(!wed?.includes(mem) && findSubTeam(wed, mem)){
+                    // mem.day = "wednesday"
                     setWed([...wed, mem])
                     // console.log(wed)
                 }
                 break;
             case "Thursday":
                 if(!thur?.includes(mem) && findSubTeam(thur, mem)){
+                    // mem.day = "thursday"
                     setThur([...thur, mem])
                     // console.log(thur)
                 }
                 break;
             case "Friday":
                 if(!fri?.includes(mem) && findSubTeam(fri, mem)){
+                    // mem.day = "friday"
                     setFri([...fri, mem])
-                    // console.log(fri)
+                    console.log(fri)
+                    console.log(fri)
                 }
                 break;
             default:
                 break;
         }
+
     }
+
+    console.log(offsite)
 
     const handleDay = (e) =>{
         // console.log(e.target.className);
@@ -114,6 +132,10 @@ export default function EditTable({members}) {
             dayText.textContent = e.target.previousSibling.outerText;
         }
         // console.log(day)
+    }
+
+    const handleSubmit =()=>{
+        SubmitOffsite();
     }
     useEffect(() => {
         fetch('http://localhost:3003/subteams/software')
