@@ -55,9 +55,12 @@ export default function EditTable({members}) {
         }
     }
 
-    const RemovePerson = (e, day) =>{
-        console.log(e);
-        console.log(day);
+    const RemovePerson = (e, day, setDay) =>{
+        let fname = e.target.parentElement.innerText.split(" ")[0];
+        console.log(fname)
+        let newDay = day.filter(d =>  d.firstname !== fname );
+        console.log(newDay)
+        setDay(newDay);
     }
 
     const addPerson = (e) =>{
@@ -150,7 +153,7 @@ export default function EditTable({members}) {
                     <div onClick={handleDay} className="placements d-flex over-flow-auto align-items-center justify-items-start py-2 pe-2">
                         {teu.map(day =>{
                             return <div className="placer-item me-4">
-                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i onClick={ e => RemovePerson(e, day)} className="bi bi-x close-btn"></i></button>
+                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i onClick={ e => RemovePerson(e, teu, setTeu)} className="bi bi-x close-btn"></i></button>
                             </div>
                         })}
                         
@@ -161,7 +164,7 @@ export default function EditTable({members}) {
                     <div onClick={handleDay} className="placements d-flex over-flow-auto align-items-center justify-items-start py-2 pe-2">
                         {wed.map(day =>{
                             return <div className="placer-item me-4">
-                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i className="bi bi-x close-btn"></i></button>
+                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i onClick={ e => RemovePerson(e, wed, setWed)} className="bi bi-x close-btn"></i></button>
                             </div>
                         })}
                     </div>
@@ -171,7 +174,7 @@ export default function EditTable({members}) {
                     <div onClick={handleDay} className="placements d-flex over-flow-auto align-items-center justify-items-start py-2 pe-2">
                         {thur.map(day =>{
                             return <div className="placer-item me-4">
-                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i className="bi bi-x close-btn"></i></button>
+                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i onClick={ e => RemovePerson(e, thur, setThur)} className="bi bi-x close-btn"></i></button>
                             </div>
                         })}
                     </div>
@@ -181,7 +184,7 @@ export default function EditTable({members}) {
                     <div onClick={handleDay} className="placements d-flex over-flow-auto align-items-center justify-items-start py-2 pe-2">
                         {fri.map(day =>{
                             return <div className="placer-item me-4">
-                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i className="bi bi-x close-btn"></i></button>
+                                <button className="btn btn-placements">{day.firstname + " " + day.lastname} <i onClick={ e => RemovePerson(e, fri, setFri)} className="bi bi-x close-btn"></i></button>
                             </div>
                         })}
                     </div>
