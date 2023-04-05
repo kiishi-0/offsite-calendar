@@ -73,7 +73,7 @@ export default function EditTable({members, SubmitOffsite, setOffsite, offsite})
         // console.log(val);
         let mem = getMember(val);
         // console.log(mem)
-        mem.day = day.toLowerCase();
+        // mem.day = day.toLowerCase();
         // console
         if(day){
             setOffsite([...offsite, mem]);
@@ -89,21 +89,21 @@ export default function EditTable({members, SubmitOffsite, setOffsite, offsite})
                 break;
             case "Wednesday":
                 if(!wed?.includes(mem) && findSubTeam(wed, mem)){
-                    // mem.day = "wednesday"
+                    mem.day = "wednesday"
                     setWed([...wed, mem])
                     // console.log(wed)
                 }
                 break;
             case "Thursday":
                 if(!thur?.includes(mem) && findSubTeam(thur, mem)){
-                    // mem.day = "thursday"
+                    mem.day = "thursday"
                     setThur([...thur, mem])
                     // console.log(thur)
                 }
                 break;
             case "Friday":
                 if(!fri?.includes(mem) && findSubTeam(fri, mem)){
-                    // mem.day = "friday"
+                    mem.day = "friday"
                     setFri([...fri, mem])
                     console.log(fri)
                     console.log(fri)

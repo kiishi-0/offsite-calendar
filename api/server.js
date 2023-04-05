@@ -104,7 +104,9 @@ app.post("/offsite/new/multiple", async (req, res) => {
     const existingMember = await Offsite.findOne({
       firstname: member.firstname,
       lastname: member.lastname,
-      day: member.day
+      team: member.team,
+      subteam: member.subteam,
+      day: member.day,
     });
 
     // If the member doesn't exist, create a new Offsite document and save it

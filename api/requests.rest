@@ -38,3 +38,6 @@ Get http://localhost:3003/subteams
 ###
 
 Get http://localhost:3003/subteams/software
+###
+
+Get http://localhost:3003/offsite/software
